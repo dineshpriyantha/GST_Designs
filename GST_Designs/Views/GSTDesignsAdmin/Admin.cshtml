@@ -1,0 +1,55 @@
+﻿@model GST_Designs.Models.ViewModel
+@*@model IEnumerable<GST_Designs.Models.FileDetail>*@
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+  
+
+
+<div class="container">
+    @Html.ActionLink("Create", "Create", "GSTDesignsAdmin",new { @class="btn btn-success"})    
+    <section><br />
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.GST_Card)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.Title)</td>
+                        <td>@Html.DisplayFor(model => item.Description)</td>
+                        <td>@foreach (var itemImg in Model.GST_FileDetail.Where(x => x.CardId.Equals(item.CardId)))
+                        {                            
+                                    <img src="/Content/assets/img/admin/@itemImg.Id@itemImg.Extension" height="50" width="50"/>
+                                }
+                        </td>
+                        <td>
+                        
+                        @using (Html.BeginForm("Admin", "GSTDesignsAdmin", null, FormMethod.Post))
+                        {
+                            foreach (var itemImg in Model.GST_FileDetail.Where(x => x.CardId.Equals(item.CardId)))
+                            {
+                                <input type="hidden" value="@itemImg.Id@itemImg.Extension" id="Description" name="Description" />
+                            }
+                            
+                            <input type="hidden" value="@item.CardId" id="CardId" name="CardId"/>
+                            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> </button>                            
+                        }
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+   
+</div>
+   

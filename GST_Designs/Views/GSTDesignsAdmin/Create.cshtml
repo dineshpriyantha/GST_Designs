@@ -1,0 +1,64 @@
+﻿@model GST_Designs.Models.Card
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Create", "GSTDesignsAdmin", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="col-md-6">
+            <fieldset>
+                <legend>Create Card</legend>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Title)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title,"", new { @style="color:red"})
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Description)
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description,"", new { @style="color:red"})
+                </div>
+                <div class="editor-label">
+                    <label>Files:</label>
+                </div>
+                <div class="editor-field">
+                    <input type="file" name="file" class="form-control" accept="image/png, image/jpeg" />
+                </div>
+                <br/>
+                <p>
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </p>
+                
+                <div class='@ViewBag.Class'>
+                    @ViewBag.Message
+                </div>
+            </fieldset>
+
+            <div>
+                @Html.ActionLink("Back to List", "Admin", new { @class = "btn btn-default" })
+            </div>
+        </div>
+
+        
+    }
+
+   
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
