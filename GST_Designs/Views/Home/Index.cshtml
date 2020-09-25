@@ -31,7 +31,11 @@
                                                 <img src="/Content/assets/img/admin/@itemImg.Id@itemImg.Extension" class="d-block w-100" height="244" />
                                             }
                                             <div class="card-body">
-                                                <h5 class="card-title border-bottom pb-3">@Html.DisplayFor(model => item.Title) <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
+                                                <h5 class="card-title border-bottom pb-3">@Html.DisplayFor(model => item.Title)                                                                                                 
+                                                    <div class="float-right d-inline-flex share fb-share-button" data-href="http://gstteq.com/" data-layout="button_count" data-size="small">
+                                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgstteq.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fas fa-share-alt text-primary"></i></a>
+                                                    </div>
+                                                 </h5>
                                                 <p class="card-text">@Html.DisplayFor(model => item.Description)</p>
                                                 @*<a href="#" class="float-right">Read more <i class="fas fa-angle-double-right"></i></a>*@
                                             </div>
@@ -51,7 +55,11 @@
                                                 <img src="/Content/assets/img/admin/@itemImg.Id@itemImg.Extension" class="d-block w-100" height="244" />
                                             }
                                             <div class="card-body">
-                                                <h5 class="card-title border-bottom pb-3">@Html.DisplayFor(model => item.Title) <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
+                                                <h5 class="card-title border-bottom pb-3">@Html.DisplayFor(model => item.Title) 
+                                                    <div class="float-right d-inline-flex share fb-share-button" data-href="http://gstteq.com/" data-layout="button_count" data-size="small">
+                                                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgstteq.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fas fa-share-alt text-primary"></i></a>
+                                                    </div>
+                                                </h5>
                                                 <p class="card-text">@Html.DisplayFor(model => item.Description)</p>
                                                 @*<a href="#" class="float-right">Read more <i class="fas fa-angle-double-right"></i></a>*@
                                             </div>
@@ -230,15 +238,15 @@
             <div class="col-md-4">
                 <h2 class="mt-0 text-center">Enter Your Details</h2>
                 <hr class="divider my-4" />
-                <form action="#">
+                <form action="/" method="post">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <textarea name="user-message" id="user-message" class="form-control" rows="5" placeholder="Enter your Message"></textarea>
+                        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Enter your Message"></textarea>
 
                     </div>
                     <button type="submit" class="btn btn-primary btn-xs js-scroll-trigger">Submit</button>
